@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714025105) do
+ActiveRecord::Schema.define(version: 20140714025449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,52 +162,6 @@ ActiveRecord::Schema.define(version: 20140714025105) do
 
   add_index "link_type", ["link"], name: "link_type_link_key", unique: true, using: :btree
 
-  create_table "movie_companies", force: true do |t|
-    t.integer  "movie_id",        null: false
-    t.integer  "company_id",      null: false
-    t.integer  "company_type_id", null: false
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_companies", ["company_id"], name: "movie_companies_idx_cid", using: :btree
-  add_index "movie_companies", ["movie_id"], name: "movie_companies_idx_mid", using: :btree
-
-  create_table "movie_info", force: true do |t|
-    t.integer  "movie_id",     null: false
-    t.integer  "info_type_id", null: false
-    t.text     "info",         null: false
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_info", ["movie_id"], name: "movie_info_idx_mid", using: :btree
-
-  create_table "movie_info_idx", force: true do |t|
-    t.integer  "movie_id",     null: false
-    t.integer  "info_type_id", null: false
-    t.text     "info",         null: false
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_info_idx", ["info"], name: "movie_info_idx_idx_info", using: :btree
-  add_index "movie_info_idx", ["info_type_id"], name: "movie_info_idx_idx_infotypeid", using: :btree
-  add_index "movie_info_idx", ["movie_id"], name: "movie_info_idx_idx_mid", using: :btree
-
-  create_table "movie_link", force: true do |t|
-    t.integer  "movie_id",        null: false
-    t.integer  "linked_movie_id", null: false
-    t.integer  "link_type_id",    null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_link", ["movie_id"], name: "movie_link_idx_mid", using: :btree
-
   create_table "person", force: true do |t|
     t.text     "name",                     null: false
     t.string   "imdb_index",    limit: 12
@@ -271,6 +225,42 @@ ActiveRecord::Schema.define(version: 20140714025105) do
   add_index "title", ["season_nr"], name: "title_idx_season_nr", using: :btree
   add_index "title", ["title"], name: "title_idx_title", using: :btree
 
+  create_table "title_companies", force: true do |t|
+    t.integer  "movie_id",        null: false
+    t.integer  "company_id",      null: false
+    t.integer  "company_type_id", null: false
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_companies", ["company_id"], name: "movie_companies_idx_cid", using: :btree
+  add_index "title_companies", ["movie_id"], name: "movie_companies_idx_mid", using: :btree
+
+  create_table "title_info", force: true do |t|
+    t.integer  "movie_id",     null: false
+    t.integer  "info_type_id", null: false
+    t.text     "info",         null: false
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_info", ["movie_id"], name: "movie_info_idx_mid", using: :btree
+
+  create_table "title_info_idx", force: true do |t|
+    t.integer  "movie_id",     null: false
+    t.integer  "info_type_id", null: false
+    t.text     "info",         null: false
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_info_idx", ["info"], name: "movie_info_idx_idx_info", using: :btree
+  add_index "title_info_idx", ["info_type_id"], name: "movie_info_idx_idx_infotypeid", using: :btree
+  add_index "title_info_idx", ["movie_id"], name: "movie_info_idx_idx_mid", using: :btree
+
   create_table "title_keyword", force: true do |t|
     t.integer  "movie_id",   null: false
     t.integer  "keyword_id", null: false
@@ -280,5 +270,15 @@ ActiveRecord::Schema.define(version: 20140714025105) do
 
   add_index "title_keyword", ["keyword_id"], name: "movie_keyword_idx_keywordid", using: :btree
   add_index "title_keyword", ["movie_id"], name: "movie_keyword_idx_mid", using: :btree
+
+  create_table "title_link", force: true do |t|
+    t.integer  "movie_id",        null: false
+    t.integer  "linked_movie_id", null: false
+    t.integer  "link_type_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_link", ["movie_id"], name: "movie_link_idx_mid", using: :btree
 
 end
