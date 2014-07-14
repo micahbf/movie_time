@@ -5,6 +5,7 @@ class Title < ActiveRecord::Base
     foreign_key: :movie_id
   has_many :title_keywords, foreign_key: :movie_id
   has_many :keywords, through: :title_keywords
+  has_many :infos, class_name: 'TitleInfo'
 
   # For each of the roles in CastInfo, we define a scoped method here
   # so we have title.directors, title.actors, etc.
