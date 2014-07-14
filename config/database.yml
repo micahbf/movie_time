@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: movies
+
+test:
+  <<: *default
+  database: movie_time_test
+
+production:
+  <<: *default
+  database: movie_time_production
+  username: movie_time
+  password: <%= ENV['MOVIE_TIME_DATABASE_PASSWORD'] %>
