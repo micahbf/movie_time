@@ -3,6 +3,8 @@ class Title < ActiveRecord::Base
   has_many :cast_infos,
     -> { order 'nr_order ASC' },
     foreign_key: :movie_id
+  has_many :movie_keywords, foreign_key: :movie_id
+  has_many :keywords, through: :movie_keywords
 
   # For each of the roles in CastInfo, we define a scoped method here
   # so we have title.directors, title.actors, etc.
