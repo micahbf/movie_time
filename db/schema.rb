@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714011936) do
+ActiveRecord::Schema.define(version: 20140714025105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,16 +198,6 @@ ActiveRecord::Schema.define(version: 20140714011936) do
   add_index "movie_info_idx", ["info_type_id"], name: "movie_info_idx_idx_infotypeid", using: :btree
   add_index "movie_info_idx", ["movie_id"], name: "movie_info_idx_idx_mid", using: :btree
 
-  create_table "movie_keyword", force: true do |t|
-    t.integer  "movie_id",   null: false
-    t.integer  "keyword_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_keyword", ["keyword_id"], name: "movie_keyword_idx_keywordid", using: :btree
-  add_index "movie_keyword", ["movie_id"], name: "movie_keyword_idx_mid", using: :btree
-
   create_table "movie_link", force: true do |t|
     t.integer  "movie_id",        null: false
     t.integer  "linked_movie_id", null: false
@@ -280,5 +270,15 @@ ActiveRecord::Schema.define(version: 20140714011936) do
   add_index "title", ["phonetic_code"], name: "title_idx_pcode", using: :btree
   add_index "title", ["season_nr"], name: "title_idx_season_nr", using: :btree
   add_index "title", ["title"], name: "title_idx_title", using: :btree
+
+  create_table "title_keyword", force: true do |t|
+    t.integer  "movie_id",   null: false
+    t.integer  "keyword_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "title_keyword", ["keyword_id"], name: "movie_keyword_idx_keywordid", using: :btree
+  add_index "title_keyword", ["movie_id"], name: "movie_keyword_idx_mid", using: :btree
 
 end
