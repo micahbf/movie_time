@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714005211) do
+ActiveRecord::Schema.define(version: 20140714010305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 20140714005211) do
 
   add_index "movie_link", ["movie_id"], name: "movie_link_idx_mid", using: :btree
 
-  create_table "name", force: true do |t|
+  create_table "person", force: true do |t|
     t.text     "name",                     null: false
     t.string   "imdb_index",    limit: 12
     t.integer  "imdb_id"
@@ -231,12 +231,12 @@ ActiveRecord::Schema.define(version: 20140714005211) do
     t.datetime "updated_at"
   end
 
-  add_index "name", ["imdb_id"], name: "name_idx_imdb_id", using: :btree
-  add_index "name", ["md5sum"], name: "name_idx_md5", using: :btree
-  add_index "name", ["name"], name: "name_idx_name", using: :btree
-  add_index "name", ["name_pcode_cf"], name: "name_idx_pcodecf", using: :btree
-  add_index "name", ["name_pcode_nf"], name: "name_idx_pcodenf", using: :btree
-  add_index "name", ["surname_pcode"], name: "name_idx_pcode", using: :btree
+  add_index "person", ["imdb_id"], name: "name_idx_imdb_id", using: :btree
+  add_index "person", ["md5sum"], name: "name_idx_md5", using: :btree
+  add_index "person", ["name"], name: "name_idx_name", using: :btree
+  add_index "person", ["name_pcode_cf"], name: "name_idx_pcodecf", using: :btree
+  add_index "person", ["name_pcode_nf"], name: "name_idx_pcodenf", using: :btree
+  add_index "person", ["surname_pcode"], name: "name_idx_pcode", using: :btree
 
   create_table "person_info", force: true do |t|
     t.integer  "person_id",    null: false
