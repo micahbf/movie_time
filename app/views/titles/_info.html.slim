@@ -1,0 +1,21 @@
+div.panel.panel-default
+  div.panel-heading Info
+  table.table
+    tr
+      td Runtime
+      td = "#{@title.infos.runtimes.first.try(:info)} min"
+    tr
+      td Tagline
+      td = @title.infos.taglines.first.try(:info) || ""
+    tr
+      td MPAA Rating
+      td = @title.infos.mpaa.first.try(:info) || ""
+    tr
+      td Budget
+      td = @title.infos.budget.first.try(:info) || ""
+    tr
+      td Gross
+      td = @title.infos.gross.first.try(:info) || ""
+    tr
+      td Genres
+      td = @title.infos.genres.map(&:info).join(", ") || ""

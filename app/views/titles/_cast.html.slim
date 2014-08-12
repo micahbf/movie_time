@@ -1,0 +1,7 @@
+div.panel.panel-default
+  div.panel-heading Cast
+  table.table
+    - @title.cast_infos.each do |cast_info|
+      tr
+        td = CastInfo.human_attribute_name(cast_info.role)
+        td = cast_info.person.natural_name

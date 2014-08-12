@@ -1,0 +1,5 @@
+div.panel.panel-default
+  div.panel-heading Trivia
+  table.table
+    - @title.infos.trivia.pluck(:info).each do |trivia|
+        tr: td = trivia
