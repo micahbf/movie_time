@@ -1,0 +1,8 @@
+div.dropdown
+  button.btn.btn-default.dropdown-toggle#genre-dropdown type='button' data-toggle='dropdown'
+    | Genres
+  ul.dropdown-menu role='menu' aria-labelledby='genre-dropdown'
+    - @genres.each do |genre|
+      li role='presentation'
+        a href=titles_path(genre: genre) role='menuitem' tabindex='-1'
+          = genre
