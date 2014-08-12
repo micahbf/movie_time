@@ -21,3 +21,7 @@ module MovieTime
     # config.i18n.default_locale = :de
   end
 end
+
+Rails.application.config.generators do |g|
+  g.template_engine = :slim
+end
