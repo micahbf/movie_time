@@ -8,7 +8,7 @@ class Title < ActiveRecord::Base
   has_many :infos, class_name: 'TitleInfo', foreign_key: :movie_id
 
   scope :genre,
-    ->(genre) { joins(:infos).where(title_info: {info_type_id: 3, info: genre}) }
+    ->(genre) { joins(:infos).where(title_info: {info_type_id: 3, info: genre}).distinct }
 
   # For each of the roles in CastInfo, we define a scoped method here
   # so we have title.directors, title.actors, etc.
