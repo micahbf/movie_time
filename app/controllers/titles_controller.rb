@@ -1,6 +1,6 @@
 class TitlesController < ApplicationController
   def show
-    @title = Title.find(params[:id])
+    @title = Title.includes(:persons).find(params[:id])
   end
 
   def index
