@@ -1,0 +1,9 @@
+h1 Titles
+
+div.row
+  div.col-md-8.col-md-offset-2
+    table.table
+      - @titles.each do |title|
+        tr: td = link_to title.title, title
+
+    = paginate @titles
