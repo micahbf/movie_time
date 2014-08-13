@@ -8,4 +8,5 @@ div.row
       - @titles.each do |title|
         tr: td = link_to title.title, title
 
-    = paginate @titles
+    - cache(['title-pagination', params[:genre], params[:page]], expire_in: 1.day) do
+      = paginate @titles
