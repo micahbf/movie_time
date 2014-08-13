@@ -7,7 +7,7 @@ class TitlesController < ApplicationController
     @titles = Title.order(:title)
     @titles = @titles.genre(params[:genre]) if params[:genre]
     @titles = @titles.page(params[:page])
-    @genres = TitleInfo.genres.distinct.pluck(:info)
+    @genres = TitleInfo.genre_list
   end
 
   def send_to_a_friend
