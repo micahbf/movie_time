@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
 
-development:
+development: &development
   <<: *default
   database: movies
 
@@ -12,7 +12,4 @@ test:
   database: movie_time_test
 
 production:
-  <<: *default
-  database: movie_time_production
-  username: movie_time
-  password: <%= ENV['MOVIE_TIME_DATABASE_PASSWORD'] %>
+  <<: *development
