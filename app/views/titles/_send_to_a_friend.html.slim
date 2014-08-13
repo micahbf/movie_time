@@ -1,0 +1,6 @@
+div.panel.panel-default
+  div.panel-heading Send To A Friend
+  div.panel-body
+    = form_tag(send_to_a_friend_title_path, method: 'get') do
+      = text_field_tag(:email)
+      = submit_tag('Send!')

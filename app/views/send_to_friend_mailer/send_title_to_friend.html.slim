@@ -1,0 +1,30 @@
+doctype html
+html lang="en"
+  head
+    meta content='text/html; charset=UTF-8' http-equiv='Content-Type'
+  body
+    Someone shared a whole bunch of info about a title with you!
+    h1 = @title.title
+    h3 = @title.production_year
+    br
+    table
+      - @title.cast_infos.each do |cast_info|
+        tr
+          td = CastInfo.human_attribute_name(cast_info.role)
+          td = cast_info.person.natural_name
+    br
+    table
+      - @title.infos.trivia.pluck(:info).each do |trivia|
+        tr
+          td = trivia
+    br
+    table
+      - @title.infos.goofs.pluck(:info).each do |goof|
+        tr
+          td = goof
+    br
+    table
+      - @title.infos.quotes.pluck(:info).each do |quote|
+        tr
+          td = quote
+    - sleep 1

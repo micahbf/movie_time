@@ -9,4 +9,10 @@ class TitlesController < ApplicationController
     @titles = @titles.page(params[:page])
     @genres = TitleInfo.genres.distinct.pluck(:info)
   end
+
+  def send_to_a_friend
+    @title = Title.find(params[:id])
+    SendToFriendMailer.send_title_to_friend(@title, params[:email])
+    redirect_to @title
+  end
 end

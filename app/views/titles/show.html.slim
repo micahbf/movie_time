@@ -3,6 +3,8 @@ h3 = @title.production_year
 
 p = @title.infos.plot.first.try(:info)
 
+= render 'send_to_a_friend'
+
 div.row
   div.col-md-6
     = render 'info'
