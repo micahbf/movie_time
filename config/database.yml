@@ -5,7 +5,7 @@ default: &default
 
 development: &development
   <<: *default
-  database: movies
+  database: movies_unoptimized
 
 test:
   <<: *default
