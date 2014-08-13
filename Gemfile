@@ -5,6 +5,7 @@ gem 'rails', '4.1.4'
 gem 'pg'
 
 gem 'coffee-rails', '~> 4.0.0'
+gem 'dalli'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'kaminari'
