@@ -12,7 +12,7 @@ class TitlesController < ApplicationController
 
   def send_to_a_friend
     @title = Title.find(params[:id])
-    SendToFriendMailer.send_title_to_friend(@title, params[:email])
+    SendToFriendMailer.delay.send_title_to_friend(@title, params[:email])
     redirect_to @title
   end
 end
